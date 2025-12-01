@@ -40,5 +40,5 @@ let rec rot2 moves (sum, clicks) =
   | [] -> (sum, clicks)
 ;;
 
-snd (rot moves (0, 0));;
-snd (rot2 moves (0, 0))
+snd (rot moves (50, 0));;
+snd (rot2 moves (50, 0))
