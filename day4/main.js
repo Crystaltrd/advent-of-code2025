@@ -29,7 +29,20 @@ function nbr_adj(i, ln) {
     }).reduce((acc, x) => acc += x, 0)
 }
 
-console.log(matrix.map((x, i) => {
-    if (x === '@') return nbr_adj(i, 140)
-    else return 67;
-}).filter((x) => x < 4).length)
+let new_matrix = matrix;
+let sum = 0;
+do {
+    matrix = new_matrix;
+    new_matrix = matrix.map((x, i) => {
+        if (x === '@') {
+            if (nbr_adj(i, 10) < 4)
+                return '.'
+            else
+                return '@'
+        } else return '.';
+    })
+    if (sum === 0)
+        console.log("Part 1 Solution: " + new_matrix.filter((x, i) => x !== matrix[i]).length);
+    sum += new_matrix.filter((x, i) => x !== matrix[i]).length;
+} while (new_matrix.filter((x, i) => x !== matrix[i]).length !== 0)
+console.log("Part 2 Solution: "+sum)
